@@ -6,21 +6,25 @@
 //  Copyright © 2017 TianjuMa. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "YelpViewController.h"
 #import "YelpDataModel.h"
 #import "YelpNetworking.h"
 #import "YelpTableViewCell.h"
+#import "YelpDataStore.h"
 
 @import CoreLocation;
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface YelpViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CLLocationManagerDelegate>
+
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic, copy) NSArray <YelpDataModel *> *dataModels;
 @property (nonatomic) UISearchBar* searchBar;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic) CLLocation *userLocation;
 @end
 
 
-@implementation ViewController
+@implementation YelpViewController
 
 - (void)viewDidLoad {
     
@@ -48,6 +52,10 @@
     self.searchBar.tintColor = [UIColor lightGrayColor];
     self.navigationItem.titleView = self.searchBar;
 
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
 }
 
 
@@ -90,7 +98,13 @@
     [searchBar setShowsCancelButton:NO animated:YES];
     [searchBar resignFirstResponder];
     [self.view endEditing:YES];
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:37.3263625 longitude:-122.027210];
+    
+    CLLocation *loc = [[YelpDataStore sharedInstance] userLocation];
+    
+    if (!loc) {
+        //mock loc
+        loc = [[CLLocation alloc] initWithLatitude:37.3263625 longitude:-122.027210];
+    }
     
     // the following code the key that we can finally make our table be able to search based on user’s input
     
@@ -102,6 +116,40 @@
         });
     }];
 }
+
+#pragma mark - Location manager methods
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Oops..."
+                                                                   message:@"Failed to Get Location"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    CLLocation *currentLocation = newLocation;
+    self.userLocation = currentLocation;
+    [[YelpDataStore sharedInstance] setUserLocation:currentLocation];
+    
+//    [manager stopUpdatingLocation];
+    
+    NSLog(@"current location %lf %lf", self.userLocation.coordinate.latitude, self.userLocation.coordinate.longitude);
+    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:@"restaurant" completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+        self.dataModels = dataModelArray;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
+}
+
 
 // Reset search bar state after cancel button clicked
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
