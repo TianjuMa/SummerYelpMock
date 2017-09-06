@@ -11,6 +11,7 @@
 #import "YelpNetworking.h"
 #import "YelpTableViewCell.h"
 #import "YelpDataStore.h"
+#import "DetailYelpViewController.h"
 
 @import CoreLocation;
 
@@ -92,6 +93,13 @@
     [searchBar setShowsCancelButton:YES animated:YES];
     return YES;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DetailYelpViewController *detailVC = [[DetailYelpViewController alloc] initWithDataModel:self.dataModels[indexPath.row]];
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {

@@ -10,6 +10,11 @@
 		76422D9B1F5B57D700F52C01 /* YelpDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 76422D9A1F5B57D700F52C01 /* YelpDataStore.m */; };
 		76422D9F1F5B59EF00F52C01 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76422D9E1F5B59EF00F52C01 /* MapViewController.m */; };
 		76422DA21F5B5F7C00F52C01 /* YelpAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 76422DA11F5B5F7C00F52C01 /* YelpAnnotation.m */; };
+		764A7BA91F5F8F3B0022BDF9 /* DetailYelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 764A7BA81F5F8F3B0022BDF9 /* DetailYelpViewController.m */; };
+		764A7BAD1F5F8F810022BDF9 /* DetailViewHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 764A7BAB1F5F8F810022BDF9 /* DetailViewHeaderTableViewCell.m */; };
+		764A7BB01F5F9DC50022BDF9 /* DetailViewHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 764A7BAF1F5F9DC50022BDF9 /* DetailViewHeaderTableViewCell.xib */; };
+		765C13441F5FA130009E01D8 /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C13421F5FA130009E01D8 /* MapTableViewCell.m */; };
+		765C13451F5FA130009E01D8 /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 765C13431F5FA130009E01D8 /* MapTableViewCell.xib */; };
 		76960BB21F565AD000BE5D2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76960BB11F565AD000BE5D2D /* Assets.xcassets */; };
 		76A8A71B1F521B4A0008AFFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A8A71A1F521B4A0008AFFF /* main.m */; };
 		76A8A71E1F521B4A0008AFFF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A8A71D1F521B4A0008AFFF /* AppDelegate.m */; };
@@ -49,6 +54,14 @@
 		76422D9E1F5B59EF00F52C01 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewController/MapViewController.m; sourceTree = "<group>"; };
 		76422DA01F5B5F7C00F52C01 /* YelpAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YelpAnnotation.h; path = DataModel/YelpAnnotation.h; sourceTree = "<group>"; };
 		76422DA11F5B5F7C00F52C01 /* YelpAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YelpAnnotation.m; path = DataModel/YelpAnnotation.m; sourceTree = "<group>"; };
+		764A7BA71F5F8F3B0022BDF9 /* DetailYelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailYelpViewController.h; path = ViewController/DetailYelpViewController.h; sourceTree = "<group>"; };
+		764A7BA81F5F8F3B0022BDF9 /* DetailYelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailYelpViewController.m; path = ViewController/DetailYelpViewController.m; sourceTree = "<group>"; };
+		764A7BAA1F5F8F810022BDF9 /* DetailViewHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewHeaderTableViewCell.h; path = View/DetailViewHeaderTableViewCell.h; sourceTree = "<group>"; };
+		764A7BAB1F5F8F810022BDF9 /* DetailViewHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewHeaderTableViewCell.m; path = View/DetailViewHeaderTableViewCell.m; sourceTree = "<group>"; };
+		764A7BAF1F5F9DC50022BDF9 /* DetailViewHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailViewHeaderTableViewCell.xib; path = View/DetailViewHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		765C13411F5FA130009E01D8 /* MapTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapTableViewCell.h; path = View/MapTableViewCell.h; sourceTree = "<group>"; };
+		765C13421F5FA130009E01D8 /* MapTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapTableViewCell.m; path = View/MapTableViewCell.m; sourceTree = "<group>"; };
+		765C13431F5FA130009E01D8 /* MapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapTableViewCell.xib; path = View/MapTableViewCell.xib; sourceTree = "<group>"; };
 		76960BB11F565AD000BE5D2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76A8A7161F521B4A0008AFFF /* SummerYelpMock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SummerYelpMock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76A8A71A1F521B4A0008AFFF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -126,6 +139,8 @@
 				76A8A7201F521B4A0008AFFF /* YelpViewController.m */,
 				76422D9D1F5B59EF00F52C01 /* MapViewController.h */,
 				76422D9E1F5B59EF00F52C01 /* MapViewController.m */,
+				764A7BA71F5F8F3B0022BDF9 /* DetailYelpViewController.h */,
+				764A7BA81F5F8F3B0022BDF9 /* DetailYelpViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -222,6 +237,12 @@
 				76B88F191F56636400BD209D /* YelpTableViewCell.h */,
 				76B88F1A1F56636400BD209D /* YelpTableViewCell.m */,
 				76B88F1B1F56636400BD209D /* YelpTableViewCell.xib */,
+				764A7BAA1F5F8F810022BDF9 /* DetailViewHeaderTableViewCell.h */,
+				764A7BAB1F5F8F810022BDF9 /* DetailViewHeaderTableViewCell.m */,
+				764A7BAF1F5F9DC50022BDF9 /* DetailViewHeaderTableViewCell.xib */,
+				765C13411F5FA130009E01D8 /* MapTableViewCell.h */,
+				765C13421F5FA130009E01D8 /* MapTableViewCell.m */,
+				765C13431F5FA130009E01D8 /* MapTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -346,8 +367,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764A7BB01F5F9DC50022BDF9 /* DetailViewHeaderTableViewCell.xib in Resources */,
 				76960BB21F565AD000BE5D2D /* Assets.xcassets in Resources */,
 				76B88F1D1F56636400BD209D /* YelpTableViewCell.xib in Resources */,
+				765C13451F5FA130009E01D8 /* MapTableViewCell.xib in Resources */,
 				76A8A7291F521B4A0008AFFF /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,9 +450,12 @@
 				76A8A7211F521B4A0008AFFF /* YelpViewController.m in Sources */,
 				76A8A74F1F521BC00008AFFF /* YelpNetworking.m in Sources */,
 				76422D9B1F5B57D700F52C01 /* YelpDataStore.m in Sources */,
+				764A7BA91F5F8F3B0022BDF9 /* DetailYelpViewController.m in Sources */,
 				76422D9F1F5B59EF00F52C01 /* MapViewController.m in Sources */,
 				76A8A71E1F521B4A0008AFFF /* AppDelegate.m in Sources */,
+				765C13441F5FA130009E01D8 /* MapTableViewCell.m in Sources */,
 				76B88F1C1F56636400BD209D /* YelpTableViewCell.m in Sources */,
+				764A7BAD1F5F8F810022BDF9 /* DetailViewHeaderTableViewCell.m in Sources */,
 				76A8A7531F522FDE0008AFFF /* YelpDataModel.m in Sources */,
 				76422DA21F5B5F7C00F52C01 /* YelpAnnotation.m in Sources */,
 				76A8A71B1F521B4A0008AFFF /* main.m in Sources */,
