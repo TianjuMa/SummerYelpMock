@@ -145,11 +145,10 @@
     CLLocation *currentLocation = newLocation;
     self.userLocation = currentLocation;
     [[YelpDataStore sharedInstance] setUserLocation:currentLocation];
-    
-//    [manager stopUpdatingLocation];
+    [manager stopUpdatingLocation];
     
     NSLog(@"current location %lf %lf", self.userLocation.coordinate.latitude, self.userLocation.coordinate.longitude);
-    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:@"restaurant" completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:self.searchBar.text completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
         self.dataModels = dataModelArray;
         
         dispatch_async(dispatch_get_main_queue(), ^{
