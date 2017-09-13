@@ -23,6 +23,8 @@
 @property (nonatomic) UISearchBar* searchBar;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic) CLLocation *userLocation;
+@property (nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 
@@ -58,6 +60,11 @@
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(didPullToRefresh) forControlEvents:UIControlEventValueChanged];
+
 }
 
 -(void) didTapSettings
@@ -65,6 +72,26 @@
     FilterViewController *filterVC = [[FilterViewController alloc] init];
     [self.navigationController pushViewController:filterVC animated:YES];
 }
+
+- (void)didPullToRefresh
+{
+    CLLocation *loc = [[YelpDataStore sharedInstance] userLocation];
+    
+    if (!loc) {
+        //mock loc
+        loc = [[CLLocation alloc] initWithLatitude:37.3263625 longitude:-122.027210];
+    }
+    [self.refreshControl beginRefreshing];
+    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:self.searchBar.text ? :@"restaurant" completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+        self.dataModels = dataModelArray;
+        [self.refreshControl endRefreshing];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
+}
+
 
 
 #pragma mark - UITableViewDelegate
