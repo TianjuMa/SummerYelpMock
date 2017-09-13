@@ -12,6 +12,7 @@
 #import "YelpTableViewCell.h"
 #import "YelpDataStore.h"
 #import "DetailYelpViewController.h"
+#import "FilterViewController.h"
 
 @import CoreLocation;
 
@@ -57,6 +58,12 @@
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
+}
+
+-(void) didTapSettings
+{
+    FilterViewController *filterVC = [[FilterViewController alloc] init];
+    [self.navigationController pushViewController:filterVC animated:YES];
 }
 
 

@@ -18,4 +18,12 @@
     return _sharedInstance;
 }
 
+- (instancetype)init
+{
+    if (self = [super init]){
+        self.selectedCategories = [NSMutableSet new];
+    }
+    return self;
+}
+
 @end
