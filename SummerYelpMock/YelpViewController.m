@@ -205,9 +205,7 @@
     
     // the following code the key that we can finally make our table be able to search based on user’s input
     
-    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:@"restaurant" parameters:[self _generateNetworRelatedParaMeters]
-                                                     completionBlock:^(NSArray<YelpDataModel *> *dataModelArray)
- {
+    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:self.searchBar.text parameters:[self _generateNetworRelatedParaMeters]completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
         self.dataModels = dataModelArray;
         
         dispatch_async(dispatch_get_main_queue(), ^{
