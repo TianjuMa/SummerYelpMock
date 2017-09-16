@@ -38,4 +38,5 @@
     [YelpDataStore sharedInstance].priceParameter = [NSString stringWithFormat:@"%li",self.priceSegment.selectedSegmentIndex+1];
 }
 
+
 @end
